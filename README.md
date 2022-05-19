@@ -11,6 +11,7 @@ Open Terminal and open the location where you want to clone project and run with
 ```
 git clone https://github.com/imobasshir/news_material3_flutter.git
 cd news_material3
+flutter create .
 flutter pub get
 flutter run
 ```
