@@ -39,46 +39,47 @@ class _NewsAppState extends State<NewsApp> {
         centerTitle: true,
       ),
       body: _bodyItem[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        elevation: 0.0,
-        selectedItemColor: Colors.black,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _currentIndex,
-        onTap: (value) {
-          setState(() => _currentIndex = value);
-        },
-        items: const [
-          BottomNavigationBarItem(
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: const Color(0x00f3f9fe),
+        destinations: const [
+          NavigationDestination(
             label: 'General',
             icon: Icon(
               Icons.feed_outlined,
             ),
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             label: 'Business',
             icon: Icon(
               Icons.business_outlined,
             ),
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             label: 'Technology',
             icon: Icon(
               Icons.laptop_outlined,
             ),
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             label: 'Sports',
             icon: Icon(
               Icons.sports_cricket_outlined,
             ),
           ),
-          BottomNavigationBarItem(
-            label: 'Entertainment',
+          NavigationDestination(
+            label: 'Films',
             icon: Icon(
               Icons.movie_outlined,
             ),
           ),
         ],
+        elevation: 0.0,
+        selectedIndex: _currentIndex,
+        onDestinationSelected: (int index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
       ),
     );
   }

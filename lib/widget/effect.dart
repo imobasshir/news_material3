@@ -11,7 +11,7 @@ class _EffectState extends State<Effect> {
   @override
   Widget build(BuildContext context) {
     return ShaderMask(
-      blendMode: BlendMode.srcATop,
+      blendMode: BlendMode.srcIn,
       shaderCallback: (Rect bounds) {
         return _shimmerGradient.createShader(bounds);
       },
