@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/widget/effect.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../controller/data_service.dart';
 import '../model/model.dart';
@@ -28,26 +29,27 @@ class _BusinessNewsState extends State<BusinessNews> {
           return ListView.builder(
             itemCount: data.length,
             itemBuilder: (context, index) {
-              return Column(
-                children: [
-                  Container(
-                    color: Colors.white,
-                    child: Padding(
+              return Container(
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: Card(
                         child: ListTile(
-                          title: Padding(
+                          trailing: Padding(
                             padding: const EdgeInsets.all(4.0),
                             child: Image.network(
                               data[index].urlToImage.toString(),
                               errorBuilder: (context, error, stackTrace) {
-                                return const Text(
-                                  'Sorry No Image found',
-                                  textScaleFactor: 1.4,
-                                  textAlign: TextAlign.center,
-                                );
+                                return Image.asset('images/not_found.png');
                               },
+                              fit: BoxFit.fitWidth,
                             ),
+                          ),
+                          title: Text(
+                            data[index].source.name.toString(),
+                            textScaleFactor: 0.8,
                           ),
                           subtitle: Padding(
                             padding: const EdgeInsets.all(4.0),
@@ -58,6 +60,7 @@ class _BusinessNewsState extends State<BusinessNews> {
                               ),
                             ),
                           ),
+                          isThreeLine: false,
                           onTap: () {
                             launch(
                               data[index].url,
@@ -69,21 +72,15 @@ class _BusinessNewsState extends State<BusinessNews> {
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               );
             },
           );
         } else if (snapshot.hasError) {
-          return Center(
-            child: Text(
-              snapshot.error.toString(),
-            ),
-          );
+          return Image.asset('images/not_found.png');
         } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const Effect();
         }
       },
     );

@@ -11,7 +11,7 @@ class DataService {
       // print(response.body);
       return NewsModel.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Failed to load users');
+      throw Exception('Failed to load news');
     }
   }
 }

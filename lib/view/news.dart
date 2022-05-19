@@ -25,10 +25,13 @@ class _NewsAppState extends State<NewsApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        // shadowColor: const Color(0x00edf7ff),
+        foregroundColor: const Color(0x00edf7ff),
+        surfaceTintColor: const Color(0x00edf7ff),
+        backgroundColor: const Color(0x00edf7ff),
         elevation: 0.0,
         title: const Text(
-          'News Headlines',
+          'News App',
           style: TextStyle(
             color: Colors.black,
           ),
